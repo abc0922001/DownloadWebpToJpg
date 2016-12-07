@@ -42,43 +42,37 @@ namespace DownloadWebpToJpg
             string origurl = this.txtUrl.Text;
             var match = regex.Match(origurl);
             var rr = new GetRegexResults();
-
+            var filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
             rr.scheme = match.Groups[1].Value;
             rr.host = match.Groups[2].Value;
             rr.unknow1 = match.Groups[3].Value;
             rr.unknow2 = match.Groups[4].Value;
             rr.unknow3 = match.Groups[5].Value;
             rr.unknow4 = match.Groups[6].Value;
-            rr.photoSize = match.Groups[7].Value;
-            rr.photoName = match.Groups[8].Value;
-
-            var newrr = new GetRegexResults();
-            newrr = rr;
-            newrr.photoSize = "d";
-            var filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
-            newrr.photoName = filename;
+            rr.photoSize = "d";
+            rr.photoName = filename;
+         
             var url =
                 string.Format("{0}://{1}/{2}/{3}/{4}/{5}/{6}/{7}",
-                newrr.scheme,
-                newrr.host,
-                newrr.unknow1,
-                newrr.unknow2,
-                newrr.unknow3,
-                newrr.unknow4,
-                newrr.photoSize,
-                newrr.photoName);
+                rr.scheme,
+                rr.host,
+                rr.unknow1,
+                rr.unknow2,
+                rr.unknow3,
+                rr.unknow4,
+                rr.photoSize,
+                rr.photoName);
 
             System.Net.WebClient WC = new System.Net.WebClient();
             System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
             Image img = Image.FromStream(Ms);
             img.Save(PATH + "/" + filename);
 
-            this.lblResults.Text = "已完成： " + newrr.photoName;
+            this.lblResults.Text = "已完成： " + rr.photoName;
             this.lblResultsPath.Text = PATH;
             this._path = PATH;
             this.txtUrl.Clear();
             rr = null;
-            newrr = null;
         }
         class GetRegexResults
         {
