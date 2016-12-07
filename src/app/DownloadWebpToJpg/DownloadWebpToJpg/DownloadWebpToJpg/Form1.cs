@@ -46,7 +46,7 @@ namespace DownloadWebpToJpg
             rr.unknow4 = match.Groups[6].Value;
             rr.photoSize = "d";
             rr.photoName = filename;
-         
+
             var url =
                 string.Format("{0}://{1}/{2}/{3}/{4}/{5}/{6}/{7}",
                 rr.scheme,
@@ -63,25 +63,15 @@ namespace DownloadWebpToJpg
             try
             {
                 System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
-          
-            Image img = Image.FromStream(Ms);
+
+                Image img = Image.FromStream(Ms);
                 img.Save(this._path + "/" + filename);
                 this.lblResults.Text = "已完成： " + rr.photoName;
                 this.lblResultsPath.Text = this._path;
             }
             catch (Exception ex)
             {
-
                 sb.AppendFormat("發生例外 : {0}", ex.ToString());
-                this.lblResults.Text = sb.ToString();
-            }
-            finally
-            {
-            }
-            catch (Exception ex)
-            {
-               
-                    sb.AppendFormat("發生例外 : {0}", ex.ToString());
                 this.lblResults.Text = sb.ToString();
             }
             finally
@@ -90,7 +80,7 @@ namespace DownloadWebpToJpg
                 rr = null;
                 sb.Clear();
             }
-        
+
         }
         class GetRegexResults
         {
@@ -115,7 +105,7 @@ namespace DownloadWebpToJpg
             {
                 this._path = path.SelectedPath;
                 this.lblResultsPath.Text = this._path;
-    }
-}
+            }
+        }
     }
 }
