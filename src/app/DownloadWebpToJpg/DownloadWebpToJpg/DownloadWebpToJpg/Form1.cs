@@ -13,8 +13,7 @@ namespace DownloadWebpToJpg
     public partial class Form1 : MaterialForm
     {
         #region Member Fields
-        string _path = "";
-        const string PATH = "E:\\Kuaipan\\AKB\\Downlad";
+        string _path = "E:\\Kuaipan\\AKB\\Downlad";
         #endregion
         public Form1()
         {
@@ -30,12 +29,8 @@ namespace DownloadWebpToJpg
         {
 
         }
-
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            //FolderBrowserDialog path = new FolderBrowserDialog(); //選擇目錄
-            //path.ShowDialog();
-
             const string Pattern = @"^(?:([A-Za-z]+):\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([0-9.\-A-Za-z]+))(?:\/(.*))?$";
             var regex =
               new System.Text.RegularExpressions.Regex(Pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
@@ -70,11 +65,18 @@ namespace DownloadWebpToJpg
                 System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
           
             Image img = Image.FromStream(Ms);
-            img.Save(PATH + "/" + filename);
+                img.Save(this._path + "/" + filename);
+                this.lblResults.Text = "已完成： " + rr.photoName;
+                this.lblResultsPath.Text = this._path;
+            }
+            catch (Exception ex)
+            {
 
-            this.lblResults.Text = "已完成： " + rr.photoName;
-            this.lblResultsPath.Text = PATH;
-            this._path = PATH;
+                sb.AppendFormat("發生例外 : {0}", ex.ToString());
+                this.lblResults.Text = sb.ToString();
+            }
+            finally
+            {
             }
             catch (Exception ex)
             {
@@ -86,6 +88,7 @@ namespace DownloadWebpToJpg
             {
                 this.txtUrl.Clear();
                 rr = null;
+                sb.Clear();
             }
         
         }
@@ -104,5 +107,15 @@ namespace DownloadWebpToJpg
         {
             System.Diagnostics.Process.Start(this._path); //打開路徑
         }
+
+        private void btnSelectSavePath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog path = new FolderBrowserDialog(); //選擇目錄
+            if (path.ShowDialog() == DialogResult.OK)
+            {
+                this._path = path.SelectedPath;
+                this.lblResultsPath.Text = this._path;
+    }
+}
     }
 }

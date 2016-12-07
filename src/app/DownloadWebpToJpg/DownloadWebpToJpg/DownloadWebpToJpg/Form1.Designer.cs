@@ -37,6 +37,7 @@ namespace DownloadWebpToJpg
             this.btnDownload = new System.Windows.Forms.Button();
             this.lblResultsPath = new System.Windows.Forms.LinkLabel();
             this.lblResults = new System.Windows.Forms.Label();
+            this.btnSelectSavePath = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblUrl
@@ -99,11 +100,22 @@ namespace DownloadWebpToJpg
             this.lblResults.TabIndex = 8;
             this.lblResults.Text = "結果";
             // 
+            // btnSelectSavePath
+            // 
+            this.btnSelectSavePath.Location = new System.Drawing.Point(413, 164);
+            this.btnSelectSavePath.Name = "btnSelectSavePath";
+            this.btnSelectSavePath.Size = new System.Drawing.Size(92, 23);
+            this.btnSelectSavePath.TabIndex = 9;
+            this.btnSelectSavePath.Text = "選擇儲存位置";
+            this.btnSelectSavePath.UseVisualStyleBackColor = true;
+            this.btnSelectSavePath.Click += new System.EventHandler(this.btnSelectSavePath_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 303);
+            this.Controls.Add(this.btnSelectSavePath);
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lblResultsPath);
             this.Controls.Add(this.btnDownload);
@@ -124,6 +136,7 @@ namespace DownloadWebpToJpg
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.LinkLabel lblResultsPath;
         private System.Windows.Forms.Label lblResults;
+        private System.Windows.Forms.Button btnSelectSavePath;
     }
 }
 
