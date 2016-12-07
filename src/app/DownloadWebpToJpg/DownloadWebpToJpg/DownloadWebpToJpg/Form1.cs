@@ -36,9 +36,7 @@ namespace DownloadWebpToJpg
             //FolderBrowserDialog path = new FolderBrowserDialog(); //選擇目錄
             //path.ShowDialog();
 
-            // Google+ webp url https://lh3.googleusercontent.com/-VWgf1rOPY2c/WEWCXWt2y3I/AAAAAAAANz8/niaCNgGnoIkKTPuaqQVtCbhWhFm7rMV7ACJoC/w716-h538-p-rw/70554a2c-8ac8-4609-b578-0cfb9ca29b27
-            //
-            const string Pattern = @"^(?:([A-Za-z]+):\/\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+)\/)(?:([0-9.\-A-Za-z]+))(?:\/(.*))?$";
+            const string Pattern = @"^(?:([A-Za-z]+):\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([0-9.\-A-Za-z]+))(?:\/(.*))?$";
             var regex =
               new System.Text.RegularExpressions.Regex(Pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string origurl = this.txtUrl.Text;
@@ -75,10 +73,12 @@ namespace DownloadWebpToJpg
             Image img = Image.FromStream(Ms);
             img.Save(PATH + "/" + filename);
 
-
-            this.lblResults.Text = PATH;
+            this.lblResults.Text = "已完成： " + newrr.photoName;
+            this.lblResultsPath.Text = PATH;
             this._path = PATH;
-
+            this.txtUrl.Clear();
+            rr = null;
+            newrr = null;
         }
         class GetRegexResults
         {

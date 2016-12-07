@@ -35,19 +35,20 @@ namespace DownloadWebpToJpg
             this.txtUrl = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnDownload = new System.Windows.Forms.Button();
-            this.lblResults = new System.Windows.Forms.LinkLabel();
+            this.lblResultsPath = new System.Windows.Forms.LinkLabel();
+            this.lblResults = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUrl
             // 
             this.lblUrl.AutoSize = true;
             this.lblUrl.Depth = 0;
-            this.lblUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUrl.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblUrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblUrl.Location = new System.Drawing.Point(55, 121);
             this.lblUrl.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblUrl.Name = "lblUrl";
-            this.lblUrl.Size = new System.Drawing.Size(41, 20);
+            this.lblUrl.Size = new System.Drawing.Size(41, 19);
             this.lblUrl.TabIndex = 0;
             this.lblUrl.Text = "網址";
             // 
@@ -77,16 +78,25 @@ namespace DownloadWebpToJpg
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
+            // lblResultsPath
+            // 
+            this.lblResultsPath.AutoSize = true;
+            this.lblResultsPath.Location = new System.Drawing.Point(65, 244);
+            this.lblResultsPath.Name = "lblResultsPath";
+            this.lblResultsPath.Size = new System.Drawing.Size(25, 12);
+            this.lblResultsPath.TabIndex = 7;
+            this.lblResultsPath.TabStop = true;
+            this.lblResultsPath.Text = "path";
+            this.lblResultsPath.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblResults_LinkClicked);
+            // 
             // lblResults
             // 
             this.lblResults.AutoSize = true;
-            this.lblResults.Location = new System.Drawing.Point(65, 244);
+            this.lblResults.Location = new System.Drawing.Point(67, 210);
             this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(25, 12);
-            this.lblResults.TabIndex = 7;
-            this.lblResults.TabStop = true;
-            this.lblResults.Text = "path";
-            this.lblResults.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblResults_LinkClicked);
+            this.lblResults.Size = new System.Drawing.Size(29, 12);
+            this.lblResults.TabIndex = 8;
+            this.lblResults.Text = "結果";
             // 
             // Form1
             // 
@@ -94,6 +104,7 @@ namespace DownloadWebpToJpg
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 303);
             this.Controls.Add(this.lblResults);
+            this.Controls.Add(this.lblResultsPath);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.lblUrl);
@@ -110,7 +121,8 @@ namespace DownloadWebpToJpg
         private MaterialSkin.Controls.MaterialSingleLineTextField txtUrl;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnDownload;
-        private System.Windows.Forms.LinkLabel lblResults;
+        private System.Windows.Forms.LinkLabel lblResultsPath;
+        private System.Windows.Forms.Label lblResults;
     }
 }
 
