@@ -64,15 +64,30 @@ namespace DownloadWebpToJpg
                 rr.photoName);
 
             System.Net.WebClient WC = new System.Net.WebClient();
-            System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
+            var sb = new System.Text.StringBuilder();
+            try
+            {
+                System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
+          
             Image img = Image.FromStream(Ms);
             img.Save(PATH + "/" + filename);
 
             this.lblResults.Text = "已完成： " + rr.photoName;
             this.lblResultsPath.Text = PATH;
             this._path = PATH;
-            this.txtUrl.Clear();
-            rr = null;
+            }
+            catch (Exception ex)
+            {
+               
+                    sb.AppendFormat("發生例外 : {0}", ex.ToString());
+                this.lblResults.Text = sb.ToString();
+            }
+            finally
+            {
+                this.txtUrl.Clear();
+                rr = null;
+            }
+        
         }
         class GetRegexResults
         {

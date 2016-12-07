@@ -81,7 +81,7 @@ namespace DownloadWebpToJpg
             // lblResultsPath
             // 
             this.lblResultsPath.AutoSize = true;
-            this.lblResultsPath.Location = new System.Drawing.Point(65, 244);
+            this.lblResultsPath.Location = new System.Drawing.Point(57, 164);
             this.lblResultsPath.Name = "lblResultsPath";
             this.lblResultsPath.Size = new System.Drawing.Size(25, 12);
             this.lblResultsPath.TabIndex = 7;
@@ -92,7 +92,8 @@ namespace DownloadWebpToJpg
             // lblResults
             // 
             this.lblResults.AutoSize = true;
-            this.lblResults.Location = new System.Drawing.Point(67, 210);
+            this.lblResults.Location = new System.Drawing.Point(57, 196);
+            this.lblResults.MaximumSize = new System.Drawing.Size(500, 0);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(29, 12);
             this.lblResults.TabIndex = 8;
