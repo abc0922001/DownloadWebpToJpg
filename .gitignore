@@ -1,2 +1,12 @@
 #ignore thumbnails created by windows
 Thumbs.db
+/build/DownloadWebpToJpg.exe.config
+/build/DownloadWebpToJpg.vshost.exe.config
+/build/DownloadWebpToJpg.vshost.exe.manifest
+/build/DownloadWebpToJpg/DownloadWebpToJpg.exe
+/build/DownloadWebpToJpg/DownloadWebpToJpg.exe.config
+/build/DownloadWebpToJpg/DownloadWebpToJpg.pdb
+/build/DownloadWebpToJpg/DownloadWebpToJpg.vshost.exe
+/build/DownloadWebpToJpg/DownloadWebpToJpg.vshost.exe.config
+/build/DownloadWebpToJpg/DownloadWebpToJpg.vshost.exe.manifest
+/build/DownloadWebpToJpg/MaterialSkin.dll
