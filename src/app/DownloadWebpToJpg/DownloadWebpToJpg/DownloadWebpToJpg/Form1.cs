@@ -13,8 +13,8 @@ namespace DownloadWebpToJpg
     public partial class Form1 : MaterialForm
     {
         #region Member Fields
-        string _path = "D:\\Downlad";
-        #endregion
+        string _path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Download");
+                #endregion
         public Form1()
         {
             InitializeComponent();
@@ -65,6 +65,7 @@ namespace DownloadWebpToJpg
                 System.IO.MemoryStream Ms = new System.IO.MemoryStream(WC.DownloadData(url));
 
                 Image img = Image.FromStream(Ms);
+                System.IO.Directory.CreateDirectory(_path);
                 img.Save(this._path + "/" + filename);
                 this.lblResults.Text = "已完成： " + rr.photoName;
                 this.lblResultsPath.Text = this._path;
