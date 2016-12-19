@@ -31,7 +31,7 @@ namespace DownloadWebpToJpg
         }
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            const string Pattern = @"^(?:([A-Za-z]+):\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+))(?:\/(.*))?$";
+            const string Pattern = @"^(?:([A-Za-z]+)\:\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+))(?:\/(.*))?$";
             var regex =
               new System.Text.RegularExpressions.Regex(Pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string origurl = this.txtUrl.Text;
