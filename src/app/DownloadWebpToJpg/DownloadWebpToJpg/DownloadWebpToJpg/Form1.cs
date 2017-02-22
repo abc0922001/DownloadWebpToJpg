@@ -14,7 +14,11 @@ namespace DownloadWebpToJpg
     {
         #region Member Fields
         string _path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Download");
-                #endregion
+        string filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
+        const string PHOTO_SIZE = "d";
+        const string Pattern =
+                @"^(?:([A-Za-z]+)\:\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+))(?:\/(.*))?$";
+        #endregion
         public Form1()
         {
             InitializeComponent();
@@ -31,30 +35,30 @@ namespace DownloadWebpToJpg
         }
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            const string Pattern = @"^(?:([A-Za-z]+)\:\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+))(?:\/(.*))?$";
+            
             var regex =
               new System.Text.RegularExpressions.Regex(Pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string origurl = this.txtUrl.Text;
             var match = regex.Match(origurl);
             var rr = new GetRegexResults();
-            var filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
+            
             rr.scheme = match.Groups[1].Value;
             rr.host = match.Groups[2].Value;
-            rr.unknow1 = match.Groups[3].Value;
-            rr.unknow2 = match.Groups[4].Value;
-            rr.unknow3 = match.Groups[5].Value;
-            rr.unknow4 = match.Groups[6].Value;
-            rr.photoSize = "d";
+            rr.unknow = string.Format("{0}/{1}/{2}/{3}",
+            match.Groups[3].Value,
+            match.Groups[4].Value,
+            match.Groups[5].Value,
+            match.Groups[6].Value
+            );
+
+            rr.photoSize = PHOTO_SIZE;
             rr.photoName = filename;
 
             var url =
-                string.Format("{0}://{1}/{2}/{3}/{4}/{5}/{6}/{7}",
+                string.Format("{0}://{1}/{2}/{3}/{4}",
                 rr.scheme,
                 rr.host,
-                rr.unknow1,
-                rr.unknow2,
-                rr.unknow3,
-                rr.unknow4,
+                rr.unknow,
                 rr.photoSize,
                 rr.photoName);
 
@@ -87,10 +91,7 @@ namespace DownloadWebpToJpg
         {
             public string scheme { get; set; }
             public string host { get; set; }
-            public string unknow1 { get; set; }
-            public string unknow2 { get; set; }
-            public string unknow3 { get; set; }
-            public string unknow4 { get; set; }
+            public string unknow { get; set; }
             public string photoSize { get; set; }
             public string photoName { get; set; }
         }
