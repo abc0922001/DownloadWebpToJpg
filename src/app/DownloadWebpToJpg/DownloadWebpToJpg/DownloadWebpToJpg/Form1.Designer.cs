@@ -1,5 +1,4 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
+﻿using MaterialSkin.Controls;
 
 namespace DownloadWebpToJpg
 {
