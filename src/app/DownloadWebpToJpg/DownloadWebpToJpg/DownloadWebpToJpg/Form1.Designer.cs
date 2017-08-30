@@ -37,6 +37,7 @@ namespace DownloadWebpToJpg
             this.lblResultsPath = new System.Windows.Forms.LinkLabel();
             this.lblResults = new System.Windows.Forms.Label();
             this.btnSelectSavePath = new System.Windows.Forms.Button();
+            this.version = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUrl
@@ -109,11 +110,20 @@ namespace DownloadWebpToJpg
             this.btnSelectSavePath.UseVisualStyleBackColor = true;
             this.btnSelectSavePath.Click += new System.EventHandler(this.btnSelectSavePath_Click);
             // 
+            // version
+            // 
+            this.version.AutoSize = true;
+            this.version.Location = new System.Drawing.Point(673, 279);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(0, 12);
+            this.version.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 303);
+            this.Controls.Add(this.version);
             this.Controls.Add(this.btnSelectSavePath);
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lblResultsPath);
@@ -136,6 +146,7 @@ namespace DownloadWebpToJpg
         private System.Windows.Forms.LinkLabel lblResultsPath;
         private System.Windows.Forms.Label lblResults;
         private System.Windows.Forms.Button btnSelectSavePath;
+        private System.Windows.Forms.Label version;
     }
 }
 

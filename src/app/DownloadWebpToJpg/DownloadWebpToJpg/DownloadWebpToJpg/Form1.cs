@@ -23,7 +23,7 @@ namespace DownloadWebpToJpg
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
+            this.version.Text = "0.0.6";
         }
         private void Form1_Load(object sender, EventArgs e)
         {
