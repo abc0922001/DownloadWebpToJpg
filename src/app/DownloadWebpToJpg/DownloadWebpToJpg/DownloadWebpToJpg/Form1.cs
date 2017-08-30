@@ -11,7 +11,6 @@ namespace DownloadWebpToJpg
     {
         #region Member Fields
         string _path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Download");
-        string filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
         const string PHOTO_SIZE = "d";
         const string Pattern =
                 @"^(?:([A-Za-z]+)\:\/\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+)\/)(?:([\d\D\w\S]+))(?:\/(.*))?$";
@@ -32,13 +31,13 @@ namespace DownloadWebpToJpg
         }
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            
+
             var regex =
               new System.Text.RegularExpressions.Regex(Pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string origurl = this.txtUrl.Text;
             var match = regex.Match(origurl);
             var rr = new GetRegexResults();
-            
+
             rr.scheme = match.Groups[1].Value;
             rr.host = match.Groups[2].Value;
             rr.unknow = string.Format("{0}/{1}/{2}/{3}",
@@ -47,7 +46,7 @@ namespace DownloadWebpToJpg
             match.Groups[5].Value,
             match.Groups[6].Value
             );
-
+            string filename = string.Format("{0}.{1}", DateTimeOffset.Now.ToString("yyyyMMddHHmmss"), "jpg");
             rr.photoSize = PHOTO_SIZE;
             rr.photoName = filename;
 
